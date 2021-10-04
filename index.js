@@ -15,9 +15,6 @@ app.listen(PORT, () => {
 })
 
 const path = require('path');
-app.get('/', (req, res) => {
-    res.render('index')
-})
 
 app.get('/about', (req, res) => {
     res.render('about')
@@ -41,6 +38,12 @@ app.post('/posts/store', (req, res) => {
 app.get('/', async(req, res) => {
     const blogposts = await BlogPost.find({})
     res.render('index', {
-        blogposts: blogposts
+        blogposts
     });
+})
+app.get('/post/:id', async(req, res) => {
+    const blogpost = await BlogPost.findById(req.params.id)
+    res.render('post', {
+        blogpost
+    })
 })
