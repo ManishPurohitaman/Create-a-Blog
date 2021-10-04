@@ -6,12 +6,12 @@ app.use(express.static('public'))
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/my_database', { useNewUrlParser: true });
 const bodyParser = require('body-parser')
-const PORT = PROCESS.env.PORT || 4000
+const PORT = process.env.PORT || 4000
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 const BlogPost = require('./models/BlogPost.js')
 app.listen(PORT, () => {
-    console.log('App listening on port PORT')
+    console.log(`App listening on port ${PORT}`)
 })
 
 const path = require('path');
